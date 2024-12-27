@@ -29,14 +29,14 @@ var theme = sessionStorage.getItem('theme') || 'light';
 
 function applyTheme() {
     if (theme == 'light') {
-        rootElement.style.background = "url('./assets/light-background.jpg')"
+        rootElement.style.background = "radial-gradient(circle, rgba(246,240,254,1) 25%, rgba(228,202,249,1) 75%)"
         rootElement.style.color = '#000'
         themeIcon.setAttribute('src', './assets/icons/bulboff.png')
         socialsDarkElement.style.display = 'none'
         socialsLightElement.style.display = 'flex'
     }
     else {
-        rootElement.style.background = "url('./assets/dark-background.jpg')";
+        rootElement.style.background = "radial-gradient(circle, rgba(57,33,55,1) 25%, rgba(13,7,35,1) 75%)";
         rootElement.style.color = '#fff'
         themeIcon.setAttribute('src', './assets/icons/bulbon.svg')
         socialsDarkElement.style.display = 'flex'
