@@ -25,7 +25,9 @@ const rootElement = document.documentElement;
 const themeIcon = document.getElementById('theme-icon')
 const socialsLightElement = document.getElementById('socials-light')
 const socialsDarkElement = document.getElementById('socials-dark')
-var theme = sessionStorage.getItem('theme') || 'light';
+
+const isDarkMQ = window.matchMedia('(prefers-color-scheme: dark)');
+var theme = sessionStorage.getItem('theme') || (isDarkMQ.matches ? 'dark':'light');
 
 function applyTheme() {
     if (theme == 'light') {
@@ -44,10 +46,16 @@ function applyTheme() {
     }
     rootElement.style.backgroundRepeat = 'no-repeat';
     rootElement.style.backgroundSize = 'cover';
+    // debugger
     sessionStorage.setItem('theme', theme)
 }
 
 applyTheme()
+
+isDarkMQ.addEventListener('change',(event)=>{
+    theme = event.matches ? 'dark': 'light'
+    applyTheme()
+})
 
 themeElement.addEventListener('click', () => {
     theme = theme == 'light' ? 'dark' : 'light'
